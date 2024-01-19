@@ -1,13 +1,17 @@
 #input_str -> +d+=3=+s+ output -> true, input_str -> f++d+ output -> false
 
-def stringChallenge(str1):
+def areAlphabetsSurroundedByPlusSigns(str1):
+    flag = False
     for i in range(len(str1)):
         if str1[i].isalpha():
             if i == 0 or i == len(str1)-1 or str1[i-1] != '+' or str1[i+1] != '+':
-                return False
+                flag = False
+                break
             else:
-                return True
+                flag = True
+
+    return flag
 
 
-str1 = "+a++"
-print(stringChallenge(str1))
+str1 = "+a+b+c+"
+print(areAlphabetsSurroundedByPlusSigns(str1))
